@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// const URL = "https://backendtalentotech.onrender.com/api/auth/";
-const URL = "http://localhost:5000/api/auth/";
+const URL = "https://backendtalentotech.onrender.com/api/auth/";
+// const URL = "http://localhost:5000/api/auth/";
 
 const Login = () => {
   const [usuario, setUsuario] = useState({
