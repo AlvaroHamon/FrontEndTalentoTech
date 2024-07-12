@@ -1,0 +1,35 @@
+/* #root {
+  text-align: center;
+} */
+
+body {
+  background-color: #ededed;
+}
+
+.navbar {
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #bebebe;
+  margin-bottom: 1.25rem;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  h2 {
+    text-align: center;
+  }
+}
+/* estilos Navbar */
+.navegacion {
+  width: 100%;
+}
+
+.inicioSesion {
+  flex: 1;
+  text-align: end;
+}
