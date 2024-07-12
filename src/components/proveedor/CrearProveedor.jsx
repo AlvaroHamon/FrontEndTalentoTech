@@ -2,10 +2,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+const URL = `https://backendtalentotech.onrender.com/api/proveedores/`;
+// const URL = `http://localhost:5000/api/proveedores/`;
 
 const CrearProveedor = () => {
   const navigate = useNavigate();
-  const URL = `http://localhost:5000/api/proveedores/`;
   const {
     register,
     handleSubmit,

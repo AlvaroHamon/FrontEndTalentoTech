@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-const URL = `http://localhost:5000/api/clientes/`;
-// const URL = `https://backendtalentotech.onrender.com/api/clientes/`;
+const URL = `https://backendtalentotech.onrender.com/api/clientes/`;
+// const URL = `http://localhost:5000/api/clientes/`;
 
 const ActualizarCliente = () => {
   const navigate = useNavigate();

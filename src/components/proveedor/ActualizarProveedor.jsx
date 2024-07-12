@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+const URL = `https://backendtalentotech.onrender.com/api/proveedores/`;
+// const URL = `http://localhost:5000/api/proveedores/`;
 
 const ActualizarProveedor = () => {
-  const URL = `http://localhost:5000/api/proveedores/`;
   const navigate = useNavigate();
   const { id } = useParams();
   const {

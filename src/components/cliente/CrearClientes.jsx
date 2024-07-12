@@ -2,8 +2,9 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-const URL = `http://localhost:5000/api/clientes/`;
-// const URL = `https://backendtalentotech.onrender.com/api/clientes/`;
+const URL = `https://backendtalentotech.onrender.com/api/clientes/`;
+// const URL = `http://localhost:5000/api/clientes/`;
+
 const CrearClientes = () => {
   const navigate = useNavigate();
 

@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+const URL = `https://backendtalentotech.onrender.com/api/proveedor/`;
+// const URL = `http://localhost:5000/api/proveedores/`;
 
-const URL = `http://localhost:5000/api/proveedores/`;
 const MostrarProveedores = () => {
   const [proveedores, setProveedores] = useState([]);
 
