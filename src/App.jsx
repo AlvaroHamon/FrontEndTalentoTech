@@ -10,6 +10,7 @@ import ActualizarProveedor from "./components/proveedor/ActualizarProveedor";
 import CrearProveedor from "./components/proveedor/CrearProveedor";
 import Login from "./components/login/Login";
 import Registro from "./components/login/Registro";
+import DashBoard from "./components/dashBoard/DashBoard";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
+          <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/clientes" element={<MostrarClientes />} />
           <Route path="/clientes/agregar" element={<CrearClientes />} />
           <Route path="/clientes/editar/:id" element={<ActualizarCliente />} />
@@ -26,7 +28,7 @@ function App() {
             path="/proveedores/editar/:id"
             element={<ActualizarProveedor />}
           />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
         </Routes>
         <Footer />

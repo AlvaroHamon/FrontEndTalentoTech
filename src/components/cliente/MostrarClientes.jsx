@@ -1,33 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 const URL = `https://backendtalentotech.onrender.com/api/clientes/`;
+const URLUSER = `https://backendtalentotech.onrender.com/api/auth/user`;
 // const URL = `http://localhost:5000/api/clientes/`;
+// const URLUSER = `http://localhost:5000/api/auth/user`;
 
 const MostrarClientes = () => {
+  const navigate = useNavigate();
   const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
     mostrarClientes();
-  }, []);
+  }, [navigate]);
 
-  //función para mostrar clientes
   const mostrarClientes = async () => {
     try {
-      const datos = await axios.get(URL, { withCredentials: true });
-      setClientes(datos.data);
+      const userLogin = await axios.get(URLUSER, { withCredentials: true });
+      if (userLogin.status !== 200) {
+        navigate("/");
+      } else {
+        const datos = await axios.get(URL, { withCredentials: true });
+        setClientes(datos.data);
+      }
     } catch (error) {
-      console.log(`No se pudieron cargar los datos: ${error}`);
+      console.log(`No se pudieron cargar los datos de los clientes`);
+      navigate("/");
     }
   };
-
   //función para eliminar clientes
   const eliminarClientes = async (id) => {
     try {
       await axios.delete(`${URL}${id}`, { withCredentials: true });
       Swal.fire({
-        title: "El cliente ha sido borrado con exito",
+        title: "El cliente ha sido borrado con éxito",
         icon: "success",
         showConfirmButton: false,
         timer: 2000,

@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const URL = "https://backendtalentotech.onrender.com/api/auth/";
 // const URL = "http://localhost:5000/api/auth/";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [usuario, setUsuario] = useState({
     usuario: "",
     password: "",
@@ -34,9 +35,11 @@ const Login = () => {
 
     setError(newError);
     if (isValid) {
-      await axios.post(`${URL}login`, usuario, {
+      const response = await axios.post(`${URL}login`, usuario, {
         withCredentials: true,
       });
+      console.log(response.data);
+      navigate("/dashboard");
     }
   };
 
