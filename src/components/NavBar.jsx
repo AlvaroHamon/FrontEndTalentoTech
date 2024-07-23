@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from "../../axiosConfig";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// const URLUSER = `http://localhost:5000/api/auth/`;
-const URLUSER = `https://backendtalentotech.onrender.com/api/auth/`;
+
+const URLUSER = `auth/`;
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -11,23 +11,21 @@ const NavBar = () => {
   useEffect(() => {
     const userLogin = async () => {
       try {
-        const response = await axios.get(`${URLUSER}user`, {
-          withCredentials: true,
-        });
+        const response = await axios.get(`${URLUSER}user`);
 
         if (response.status === 200) {
           setLogin(true);
         }
       } catch (error) {
-        console.log("usuario no autenticado");
+        // console.log("usuario no autenticado");
       }
     };
     userLogin();
-  }, []);
+  }, [navigate]);
 
   const handleLogout = async () => {
     try {
-      await axios.post(`${URLUSER}logout`, {}, { withCredentials: true });
+      await axios.post(`${URLUSER}logout`, {});
       setLogin(false);
       navigate("/");
     } catch (error) {

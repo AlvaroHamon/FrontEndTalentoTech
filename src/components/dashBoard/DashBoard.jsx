@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from "../../../axiosConfig";
 import { useEffect, useState } from "react";
-const URLUSER = `https://backendtalentotech.onrender.com/api/auth/user`;
-// const URLUSER = `http://localhost:5000/api/auth/user`;
+
+const URLUSER = `auth/user`;
 
 const DashBoard = () => {
   const [usuario, setUsuario] = useState(null);

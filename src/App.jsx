@@ -29,7 +29,7 @@ function App() {
             element={<ActualizarProveedor />}
           />
           <Route path="/" element={<Login />} />
-          <Route path="/registro" element={<Registro />} />
+          <Route path="/register" element={<Registro />} />
         </Routes>
         <Footer />
       </BrowserRouter>
