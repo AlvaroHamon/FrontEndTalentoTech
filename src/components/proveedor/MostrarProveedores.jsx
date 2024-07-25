@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../../axiosConfig";
 import Swal from "sweetalert2";
-const URL = `https://backendtalentotech.onrender.com/api/proveedores`;
+const URL = `proveedores`;
+const URLUSER = `auth/user`;
 // const URL = `http://localhost:5000/api/proveedores/`;
 
 const MostrarProveedores = () => {
@@ -15,8 +16,11 @@ const MostrarProveedores = () => {
   //función para mostrar Proveedores
   const mostrarProveedores = async () => {
     try {
-      const datos = await axios.get(URL, { withCredentials: true });
-      setProveedores(datos.data);
+      const userLogin = await axios.get(URLUSER);
+      if (!userLogin.status !== 200) {
+        const datos = await axios.get(URL);
+        setProveedores(datos.data);
+      }
     } catch (error) {
       console.log(`No se pudieron cargar los datos: ${error}`);
     }
@@ -25,7 +29,7 @@ const MostrarProveedores = () => {
   //función para eliminar Proveedores
   const eliminarProveedores = async (id) => {
     try {
-      await axios.delete(`${URL}${id}`, { withCredentials: true });
+      await axios.delete(`${URL}/${id}`);
       Swal.fire({
         title: "El proveedor ha sido borrado con exito",
         icon: "success",

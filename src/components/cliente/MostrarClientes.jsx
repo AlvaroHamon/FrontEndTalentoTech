@@ -4,7 +4,7 @@ import axios from "../../../axiosConfig";
 import Swal from "sweetalert2";
 
 const URLUSER = `auth/user`;
-const URL = `clientes/`;
+const URL = `clientes`;
 
 const MostrarClientes = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const MostrarClientes = () => {
 
   useEffect(() => {
     mostrarClientes();
-  }, [navigate]);
+  }, []);
 
   const mostrarClientes = async () => {
     try {

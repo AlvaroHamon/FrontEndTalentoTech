@@ -54,18 +54,22 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav navegacion">
               <li className="nav-item">
-                <Link
-                  to="/clientes"
-                  className="nav-link active"
-                  aria-current="page"
-                >
-                  Clientes
-                </Link>
+                {login && (
+                  <Link
+                    to="/clientes"
+                    className="nav-link active"
+                    aria-current="page"
+                  >
+                    Clientes
+                  </Link>
+                )}
               </li>
               <li className="nav-item">
-                <Link to="/proveedores" className="nav-link">
-                  Proveedores
-                </Link>
+                {login && (
+                  <Link to="/proveedores" className="nav-link">
+                    Proveedores
+                  </Link>
+                )}
               </li>
               <li className="nav-item inicioSesion">
                 {login ? (
