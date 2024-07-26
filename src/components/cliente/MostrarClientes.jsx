@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "../style.css";
 import axios from "../../../axiosConfig";
 import Swal from "sweetalert2";
 
@@ -28,10 +29,11 @@ const MostrarClientes = () => {
       navigate("/");
     }
   };
-  //función para eliminar clientes
+
+  // función para eliminar clientes
   const eliminarClientes = async (id) => {
     try {
-      await axios.delete(`${URL}${id}`, { withCredentials: true });
+      await axios.delete(`${URL}/${id}`, { withCredentials: true });
       Swal.fire({
         title: "El cliente ha sido borrado con éxito",
         icon: "success",
@@ -50,63 +52,59 @@ const MostrarClientes = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
+    <div className="container-fluid">
+      <div className="row mb-3">
         <div className="col">
           <h2>Lista de Clientes</h2>
           <Link to="/clientes/agregar" className="btn btn-primary">
             <i className="fa-solid fa-plus"></i>
           </Link>
-          <div className="table-responsive">
-            <table className="table table-hover">
-              <thead className="table-primary">
-                <tr>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Documento</th>
-                  <th>Correo</th>
-                  <th>Teléfono</th>
-                  <th>Nit</th>
-                  <th>Dirección</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {clientes.map((item) => {
-                  return (
-                    <tr key={item._id}>
-                      <td>{item.nombres}</td>
-                      <td>{item.apellidos}</td>
-                      <td>{item.cedula}</td>
-                      <td>{item.correo}</td>
-                      <td>{item.numeroContacto}</td>
-                      <td>{item.nit}</td>
-                      <td>{item.direccion}</td>
-                      <td>
-                        <Link
-                          to={`/clientes/editar/${item._id}`}
-                          className="btn btn-primary mt-2 mb-2"
-                          aria-label="Editar Cliente"
-                        >
-                          <i className="fa-solid fa-pen-to-square" />
-                        </Link>
-                        <button
-                          onClick={() => {
-                            eliminarClientes(item._id);
-                          }}
-                          className="btn btn-danger"
-                          aria-label="Eliminar cliente"
-                        >
-                          <i className="fa-solid fa-trash" />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
         </div>
+      </div>
+      <div className="table-responsive">
+        <table className="table table-hover">
+          <thead className="table-primary">
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Documento</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th>Nit</th>
+              <th>Dirección</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {clientes.map((item) => (
+              <tr key={item._id}>
+                <td>{item.nombres}</td>
+                <td>{item.apellidos}</td>
+                <td>{item.cedula}</td>
+                <td>{item.correo}</td>
+                <td>{item.numeroContacto}</td>
+                <td>{item.nit}</td>
+                <td>{item.direccion}</td>
+                <td>
+                  <Link
+                    to={`/clientes/editar/${item._id}`}
+                    className="btn btn-primary btn-sm me-2 mt-2 mb-2"
+                    aria-label="Editar Cliente"
+                  >
+                    <i className="fa-solid fa-pen-to-square" />
+                  </Link>
+                  <button
+                    onClick={() => eliminarClientes(item._id)}
+                    className="btn btn-danger btn-sm mt-2 mb-2"
+                    aria-label="Eliminar cliente"
+                  >
+                    <i className="fa-solid fa-trash" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
